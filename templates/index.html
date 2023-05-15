@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html class="dark-mode">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Recomendação de Filmes</title>
+</head>
+<body>
+    <h1>Recomendação de Filmes</h1>
+
+    <form method="POST" action="/recommend">
+        <label for="input_list">Digite uma lista de títulos de filmes separados por vírgula:</label><br>
+        <input type="text" name="input_list" id="input_list" required><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <h2>Resultados:</h2>
+    <div id="results">
+      {% if tabela_html %}
+        {{ tabela_html|safe }}
+      {% else %}
+        <p>Nenhum resultado encontrado.</p>
+      {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
